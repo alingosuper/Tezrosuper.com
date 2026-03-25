@@ -1,53 +1,36 @@
-import React, { useState } from 'react';
-import { signInWithGoogle } from '../firebase';
-import GuestCheck from '../components/popup/GuestCheck';
+import React from 'react';
 
 const Home = () => {
-  const [showGuest, setShowGuest] = useState(false);
-
   return (
-    <div style={containerStyle}>
-      <header style={headerStyle}>
-        <h1 style={{ color: '#FFD700', fontSize: '2.5rem' }}>TEZRO</h1>
-        <p style={{ color: '#ccc' }}>تیز، محفوظ اور بااعتماد سروسز</p>
-      </header>
+    <div style={{ background: '#000', minHeight: '100vh', color: '#fff', fontFamily: 'sans-serif' }}>
+      <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '20px', borderBottom: '1px solid #111' }}>
+        <h2 style={{ color: '#FFD700', margin: 0 }}>TEZRO</h2>
+        <button style={{ background: '#FFD700', border: 'none', padding: '8px 20px', borderRadius: '5px', fontWeight: 'bold' }}>Login</button>
+      </nav>
 
-      <main style={mainStyle}>
-        {/* رجسٹریشن کا بٹن */}
-        <button onClick={signInWithGoogle} style={primaryBtn}>
-          اکاؤنٹ بنائیں / لاگ ان کریں
-        </button>
-
-        {/* بغیر رجسٹریشن جانچ پڑتال کا بٹن */}
-        <button 
-          onClick={() => setShowGuest(true)} 
-          style={secondaryBtn}
-        >
-          بغیر رجسٹریشن جانچ پڑتال کریں 🔍
-        </button>
-      </main>
-
-      {/* گیسٹ چیک پاپ اپ لاجک */}
-      {showGuest && (
-        <GuestCheck 
-          onClose={() => setShowGuest(false)} 
-          onLogin={signInWithGoogle} 
-        />
-      )}
-
-      <footer style={footerStyle}>
-        © 2026 Tezro Ecosystem | All Rights Reserved
-      </footer>
+      <div style={{ textAlign: 'center', paddingTop: '100px', paddingHorizontal: '20px' }}>
+        <h1 style={{ fontSize: '3rem', marginBottom: '10px' }}>Tezro Super App</h1>
+        <p style={{ color: '#888', fontSize: '1.2rem' }}>پاکستان کی پہلی محفوظ ترین ملٹی سروس ایپ</p>
+        
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '50px', flexWrap: 'wrap' }}>
+          <div style={cardStyle}>🚗 Rides</div>
+          <div style={cardStyle}>📦 Delivery</div>
+          <div style={cardStyle}>🛠️ Services</div>
+        </div>
+      </div>
     </div>
   );
 };
 
-// سٹائلنگ (تیزرو گولڈن تھیم)
-const containerStyle = { backgroundColor: '#000', color: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '20px' };
-const headerStyle = { marginBottom: '40px' };
-const mainStyle = { display: 'flex', flexDirection: 'column', gap: '15px', width: '100%', maxWidth: '300px' };
-const primaryBtn = { padding: '15px', backgroundColor: '#FFD700', color: '#000', border: 'none', borderRadius: '12px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' };
-const secondaryBtn = { padding: '15px', backgroundColor: 'transparent', color: '#FFD700', border: '2px solid #FFD700', borderRadius: '12px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px' };
-const footerStyle = { position: 'absolute', bottom: '20px', fontSize: '12px', color: '#555' };
+const cardStyle = {
+  background: '#111',
+  padding: '30px',
+  borderRadius: '15px',
+  border: '1px solid #222',
+  width: '150px',
+  fontSize: '1.1rem',
+  cursor: 'pointer',
+  transition: '0.3s'
+};
 
 export default Home;
