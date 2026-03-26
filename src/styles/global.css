@@ -1,11 +1,22 @@
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
 body {
   margin: 0;
   padding: 0;
   background-color: #000;
   color: #fff;
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
-
-h1 {
-  color: #FFD700; /* Gold accents */
+h1, h2, h3 {
+  color: #FFD700;
+  letter-spacing: -1px;
 }
+button:active {
+  transform: scale(0.95);
+}
+/* Scrollbar Gold */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 10px; }
